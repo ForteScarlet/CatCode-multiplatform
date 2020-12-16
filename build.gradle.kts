@@ -18,9 +18,10 @@ kotlin {
             useJUnit()
         }
     }
-    // js(LEGACY) {
-    js(IR) {
+    js(LEGACY) { // xxx.jar
+    // js(IR) {
         browser {
+            // useCommonJs()
             testTask {
                 useKarma {
                     useChromeHeadless()
@@ -28,7 +29,6 @@ kotlin {
                 }
             }
         }
-        nodejs()
     }
 
     linuxX64("linux") {

@@ -39,16 +39,19 @@ public interface CodeBuilder<T> {
     /**
      * type类型
      */
+    @kotlin.js.JsName("type")
     val type: String
 
     /**
      * 指定一个code的key, 并通过这个key设置一个value.
      */
+    @kotlin.js.JsName("key")
     fun key(key: String): CodeBuilderKey<T>
 
     /**
      * 构建一个猫猫码, 并以其载体实例[T]返回.
      */
+    @kotlin.js.JsName("build")
     fun build(): T
 
     /**
@@ -62,11 +65,13 @@ public interface CodeBuilder<T> {
         /**
          * 为当前Key设置一个value值并返回.
          */
+        @kotlin.js.JsName("value")
         fun value(value: Any?): CodeBuilder<T>
 
         /**
          * 为当前Key设置一个空的value值并返回.
          */
+        @kotlin.js.JsName("emptyValue")
         fun emptyValue(): CodeBuilder<T>
     }
 

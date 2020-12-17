@@ -107,21 +107,22 @@ public interface Neko : NekoMap<String, String>, CharSequence {
     fun immutable(): Neko
 
 
-    companion object Of {
+    companion object Construct {
 
         /**
          * 得到一个空参的[Neko]实例。
          */
+
+        @kotlin.js.JsName("byType")
         // @kotlin.jvm.JvmStatic
-        @kotlin.js.JsName("ofType")
-        fun ofType(type: String): Neko = EmptyNeko(type)
+        fun byType(type: String): Neko = EmptyNeko(type)
 
         /**
          * 通过猫猫码字符串得到一个[Neko]实例
          */
+        @kotlin.js.JsName("byCode")
         // @kotlin.jvm.JvmStatic
-        @kotlin.js.JsName("of")
-        fun of(code: String): Neko = Nyanko.byCode(code)
+        fun byCode(code: String): Neko = Nyanko.byCode(code)
     }
 
 
@@ -173,6 +174,8 @@ interface MutableNoraNeko : MutableNeko {
     /* @kotlin.jvm.JvmDefault */
     override var codeType: String
 }
+
+
 abstract class BaseMutableNoraNeko : MutableNoraNeko
 
 /**

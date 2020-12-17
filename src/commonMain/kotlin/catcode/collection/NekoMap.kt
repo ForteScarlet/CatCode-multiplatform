@@ -24,6 +24,7 @@ public interface NekoMap<K, out V> {
     /**
      * 转化为 [Map]。
      */
+    @kotlin.js.JsName("toMap")
     fun toMap(): Map<K, V>
 
     /**
@@ -49,11 +50,13 @@ public interface NekoMap<K, out V> {
     /**
      * 是否包含某个键。
      */
+    @kotlin.js.JsName("containsKey")
     fun containsKey(key: K): Boolean
 
     /**
      * 是否包含某个值。
      */
+    @kotlin.js.JsName("containsValue")
     fun containsValue(value: @UnsafeVariance V): Boolean
 
     /**
@@ -71,11 +74,13 @@ public interface NekoMap<K, out V> {
      * 获取某个键对应的值。如果不存在则返回一个默认值。
      */
     /* @kotlin.jvm.JvmDefault */
+    @kotlin.js.JsName("getOrDefault")
     fun getOrDefault(key: K, defaultValue: @UnsafeVariance V): V = get(key) ?: defaultValue
 
     /**
      * foreach entries.
      */
+    @kotlin.js.JsName("forEach")
     fun forEach(action: (K, V) -> Unit) {
         entries.forEach {
             action(it.key, it.value)
@@ -170,6 +175,7 @@ public interface MutableNekoMap<K, V> : NekoMap<K, V> {
      *
      * @return 如果存在旧值，返回旧值。
      */
+    @kotlin.js.JsName("put")
     fun put(key: K, value: V): V?
 
     /**
@@ -177,11 +183,13 @@ public interface MutableNekoMap<K, V> : NekoMap<K, V> {
      *
      * @return 被移除的值。可能不存在。
      */
+    @kotlin.js.JsName("remove")
     fun remove(key: K): V?
 
     /**
      * 存入多个键值对。
      */
+    @kotlin.js.JsName("putAllNekoMap")
     fun putAll(from: NekoMap<out K, V>) {
         putAll(from.toMap())
     }
@@ -189,6 +197,7 @@ public interface MutableNekoMap<K, V> : NekoMap<K, V> {
     /**
      * 存入多个键值对。
      */
+    @kotlin.js.JsName("putAllMap")
     fun putAll(from: Map<out K, V>) {
         from.forEach { (k: K, v: V) ->
             put(k, v)
@@ -214,6 +223,7 @@ public interface MutableNekoMap<K, V> : NekoMap<K, V> {
     /**
      * 清除所有的键值对。
      */
+    @kotlin.js.JsName("clear")
     fun clear()
 
 }

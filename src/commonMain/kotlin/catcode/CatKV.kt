@@ -16,15 +16,21 @@ package catcode
 /**
  * data class like [Pair].
  */
-public data class CatKV<K, V>(val key: K, val value: V) {
+public data class CatKV<K, V>(
+    @kotlin.js.JsName("key")
+    val key: K,
+    @kotlin.js.JsName("value")
+    val value: V
+    ) {
     override fun toString(): String = "KV($key$CAT_KV$value)"
 
     /**
      * kv companion.
      */
-    companion object KV {
+    companion object Construct {
         @kotlin.jvm.JvmStatic
-        fun <K, V> kv(k: K, v: V) = CatKV(k, v)
+        @kotlin.js.JsName("by")
+        fun <K, V> by(k: K, v: V) = CatKV(k, v)
     }
 }
 

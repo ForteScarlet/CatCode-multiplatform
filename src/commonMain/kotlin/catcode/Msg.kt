@@ -33,6 +33,7 @@ constructor(private val delimiter: CharSequence = " ", private val delegate: () 
     /**
      * plus
      */
+    @kotlin.js.JsName("plusList")
     operator fun plus(other: List<CharSequence?>): Msgs {
         other.forEach { this.add(it ?: "null") }
         return this
@@ -41,6 +42,7 @@ constructor(private val delimiter: CharSequence = " ", private val delegate: () 
     /**
      * plus
      */
+    @kotlin.js.JsName("plusStr")
     operator fun plus(other: CharSequence?): Msgs {
         this.add(other ?: "null")
         return this

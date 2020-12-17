@@ -13,7 +13,6 @@ repositories {
 kotlin {
     jvm {
         compilations.all {
-            compileKotlinTask.javaPackagePrefix = "love.forte"
             kotlinOptions.jvmTarget = "1.8"
             kotlinOptions.javaParameters = true
         }

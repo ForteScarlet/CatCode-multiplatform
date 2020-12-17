@@ -120,10 +120,10 @@ public fun String.enCatText(): String = CatEncoder.encodeText(this)
 /**
  * 猫猫码的操作工具类
  */
-public object CatCodeUtil : NekoAibo("CAT") {
+public object CatCodeUtil : NekoAibo by NekoAiboImpl("CAT"), TemplateAble, BuilderAble {
     @kotlin.jvm.JvmStatic
-    val instance
-        get() = this
+    @kotlin.js.JsName("instance")
+    val instance get() = this
 
     override val catCodeHead: String = CAT_HEAD
     /**

@@ -27,44 +27,59 @@ interface CodeTemplate<T> {
      * at别人
      * @see at
      */
-    /* @JvmDefault */ fun at(code: Long): T = at(code.toString())
+    @kotlin.js.JsName("atByCode")
+    fun at(code: Long): T = at(code.toString())
 
     /**
      * at别人
      */
+    @kotlin.js.JsName("at")
     fun at(code: String): T
 
     /**
      * at所有人。
      * at所有人即为at类型cat码中存在参数 `all=true`
      */
+    @kotlin.js.JsName("atAll")
     fun atAll(): T
 
     /**
      * face
      */
+    @kotlin.js.JsName("face")
     fun face(id: String): T
-    /* @kotlin.jvm.JvmDefault */ fun face(id: Long): T = face(id.toString())
+    /* @kotlin.jvm.JvmDefault */
+    @kotlin.js.JsName("faceById")
+    fun face(id: Long): T = face(id.toString())
 
     /**
      * big face
      */
+    @kotlin.js.JsName("bface")
     fun bface(id: String): T
-    /* @kotlin.jvm.JvmDefault */ fun bface(id: Long): T = bface(id.toString())
+    /* @kotlin.jvm.JvmDefault */
+    @kotlin.js.JsName("bfaceById")
+    fun bface(id: Long): T = bface(id.toString())
 
     /**
      * small face
      */
+    @kotlin.js.JsName("sface")
     fun sface(id: String): T
-    /* @kotlin.jvm.JvmDefault */ fun sface(id: Long): T = sface(id.toString())
+    /* @kotlin.jvm.JvmDefault */
+    @kotlin.js.JsName("sfaceById")
+    fun sface(id: Long): T = sface(id.toString())
 
     /**
      * image
      * @param file 一般代表图片的路径，或者链接。
      * @param flash 闪图
      */
+    @kotlin.js.JsName("imageFlash")
     fun image(file: String, flash: Boolean): T
-    /* @kotlin.jvm.JvmDefault */ fun image(file: String): T = image(file, false)
+    /* @kotlin.jvm.JvmDefault */
+    @kotlin.js.JsName("image")
+    fun image(file: String): T = image(file, false)
 
 
     /**
@@ -74,8 +89,11 @@ interface CodeTemplate<T> {
      * {2}为是否为变声，若该参数为true则显示变声标记。该参数可被忽略。
      * 举例：[CAT:record,file=1.silk，magic=true]（发送data\record\1.silk，并标记为变声）
      */
+    @kotlin.js.JsName("recordMagic")
     fun record(file: String, magic: Boolean): T
-    /* @kotlin.jvm.JvmDefault */ fun record(file: String): T = record(file, false)
+    /* @kotlin.jvm.JvmDefault */
+    @kotlin.js.JsName("record")
+    fun record(file: String): T = record(file, false)
 
 
 
@@ -87,9 +105,12 @@ interface CodeTemplate<T> {
      * 2 - 猜拳结果为剪刀
      * 3 - 猜拳结果为布
      */
+    @kotlin.js.JsName("rpsByType")
     fun rps(type: String): T
     fun rps(): T
-    /* @kotlin.jvm.JvmDefault */ fun rps(type: Int) = rps(type.toString())
+    /* @kotlin.jvm.JvmDefault */
+    @kotlin.js.JsName("rpsByTypeId")
+    fun rps(type: Int) = rps(type.toString())
 
 
     /**
@@ -98,8 +119,11 @@ interface CodeTemplate<T> {
      * {1}对应掷出的点数，暂不支持发送时自定义。该参数可被忽略。
      */
     fun dice(): T
+    @kotlin.js.JsName("diceByType")
     fun dice(type: String): T
-    /* @kotlin.jvm.JvmDefault */ fun dice(type: Int) = dice(type.toString())
+    /* @kotlin.jvm.JvmDefault */
+    @kotlin.js.JsName("diceByTypeId")
+    fun dice(type: Int) = dice(type.toString())
 
     /**
      * 窗口抖动
@@ -117,8 +141,11 @@ interface CodeTemplate<T> {
      * [CAT:music,type=qq,id=422594]（发送一首QQ音乐的“Time after time”歌曲到群内）
      * [CAT:music,type=163,id=28406557]（发送一首网易云音乐的“桜咲く”歌曲到群内）
      */
+    @kotlin.js.JsName("musicWithStyle")
     fun music(type: String, id: String, style: String?): T
-    /* @kotlin.jvm.JvmDefault */ fun music(type: String, id: String): T = music(type, id, null)
+    /* @kotlin.jvm.JvmDefault */
+    @kotlin.js.JsName("music")
+    fun music(type: String, id: String): T = music(type, id, null)
 
     /**
      * [CAT:music,type=custom,url={1},audio={2},title={3},content={4},image={5}] - 发送音乐自定义分享
@@ -130,11 +157,14 @@ interface CodeTemplate<T> {
      * @param image  {5}为音乐的封面图片链接。若参数为空或被忽略，则显示默认图片。
      *
      */
+    @kotlin.js.JsName("customMusicWithMore")
     fun customMusic(url: String, audio: String, title: String, content: String?, image: String?): T
-    /* @kotlin.jvm.JvmDefault */ fun customMusic(url: String, audio: String, title: String): T = customMusic(url, audio, title, null, null)
+    /* @kotlin.jvm.JvmDefault */
+    @kotlin.js.JsName("customMusic")
+    fun customMusic(url: String, audio: String, title: String): T = customMusic(url, audio, title, null, null)
 
 
-    /**
+            /**
      * [CAT:share,url={1},title={2},content={3},image={4}] - 发送链接分享
      * {1}为分享链接。
      * {2}为分享的标题，建议12字以内。
@@ -142,19 +172,11 @@ interface CodeTemplate<T> {
      * {4}为分享的图片链接。若参数为空或被忽略，则显示默认图片。
      * 注意：链接分享只能作为单独的一条消息发送
      */
+    @kotlin.js.JsName("shareWithMore")
     fun share(url: String, title: String, content: String?, image: String?): T
-    /* @kotlin.jvm.JvmDefault */ fun share(url: String, title: String): T = share(url, title, null, null)
-
-
-    // /**
-    //  * 地点
-    //  * [CAT:location,lat={1},lon={2},title={3},content={4}]
-    //  * {1} 纬度
-    //  * {2} 经度
-    //  * {3} 分享地点的名称
-    //  * {4} 分享地点的具体地址
-    //  */
-    // fun location(lat: String, lon: String, title: String, content: String): T
+    /* @kotlin.jvm.JvmDefault */
+    @kotlin.js.JsName("share")
+    fun share(url: String, title: String): T = share(url, title, null, null)
 
 
 }

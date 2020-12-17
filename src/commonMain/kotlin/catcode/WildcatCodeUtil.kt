@@ -31,10 +31,11 @@ import catcode.codes.NoraNyanko
  */
 @Suppress("unused", "DeprecatedCallableAddReplaceWith")
 public class WildcatCodeUtil
-private constructor(codeType: String) : NekoAibo(codeType) {
+private constructor(private val codeType: String) : NekoAibo by NekoAiboImpl(codeType), TemplateAble, BuilderAble {
 
     companion object {
         @kotlin.jvm.JvmStatic
+        @kotlin.js.JsName("instance")
         fun getInstance(codeType: String): WildcatCodeUtil = WildcatCodeUtil(codeType)
     }
 
@@ -129,7 +130,7 @@ private constructor(codeType: String) : NekoAibo(codeType) {
      */
     override fun getNeko(text: String, type: String, index: Int): Neko? {
         val cat: String = getCat(text, type, index) ?: return null
-        return Neko.of(cat)
+        return Neko.byCode(cat)
     }
 
 

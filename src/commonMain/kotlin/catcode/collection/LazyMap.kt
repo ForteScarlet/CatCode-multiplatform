@@ -54,6 +54,7 @@ constructor(
 
     override fun isEmpty(): Boolean = map.isEmpty()
 
+    @kotlin.js.JsName("copy")
     fun copy(): LazyMap<K, V> = LazyMap(map)
 
 
@@ -77,13 +78,6 @@ constructor(
     }
 
 }
-
-
-
-// public fun <K, V>  LazyMap<K, V>.getOrDefault(key: V, defaultValue: V): V {
-//
-// }
-
 
 
 
@@ -155,6 +149,7 @@ constructor(
      * @param initializer 初始化函数.
      * @return V?
      */
+    @kotlin.js.JsName("put")
     fun put(key: K, initializer: () -> V): V? {
         return map.put(key, lazy(mode = mode, initializer = initializer))?.value
     }
@@ -167,6 +162,7 @@ constructor(
     override fun remove(key: K): V? = map.remove(key)?.value
 
 
+    @kotlin.js.JsName("copy")
     fun copy(): MutableLazyMap<K, V> = MutableLazyMap(map, mode)
 }
 

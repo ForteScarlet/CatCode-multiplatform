@@ -245,7 +245,7 @@ final Neko alAll = NekoObjects.getNekoAtAll();
 
 #### 3. 通过工具类获取
 ```java
-CatCodeUtil.toCat("at", "qq=123")
+final String at = CatCodeUtil.toCat("at", "qq=123");
 ```
 
 ### JS
@@ -287,7 +287,10 @@ CatCodeUtil.toCat("at", "qq=123")
 
 #### C/C++
 
-> 注①：kotlin提供的动态库编译结果在调用的时候并不是十分顺手，因此建议通过c/c++编写一个桥梁库（lib-bridge）以简化后续开发。
+> 注①：kotlin提供的动态库编译结果在调用的时候并不是十分顺手，因此建议通过c/c++编写一个桥梁库（lib-bridge）以简化后续开发，例如[官方示例：python_extension](https://github.com/JetBrains/kotlin-native/tree/master/samples/python_extension)
+
+> 注②：kotlin全平台尚处于alpha阶段，不保证其效率与稳定性。
+> 参考：[Kotlin 多平台](https://www.kotlincn.net/docs/reference/mpp-intro.html)
 
 ```C
 // 待续...

@@ -66,6 +66,38 @@ public interface BuilderAble {
 }
 
 
+/**
+ * 构建 cat时用的统一参数实例。为js提供的便利性最大。
+ */
+public data class ToCatParam(
+    val type: String,
+    val encode: Boolean = false,
+    val params: Array<CatKV<String, *>> = emptyArray()
+) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || this::class != other::class) return false
+
+        other as ToCatParam
+
+        if (type != other.type) return false
+        if (encode != other.encode) return false
+        if (!params.contentEquals(other.params)) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = type.hashCode()
+        result = 31 * result + encode.hashCode()
+        result = 31 * result + params.contentHashCode()
+        return result
+    }
+
+}
+
+
+
 
 /**
  *
@@ -83,12 +115,17 @@ public interface NekoAibo
 
 
     /**
-     * 仅通过一个类型获取一个猫猫码。例如`\[Cat:hi]`
+     * 通过完整参数构建一个猫猫码。参数中，[ToCatParam.type] 不可忽略。
      */
     @kotlin.js.JsName("toCat")
-    fun toCat(type: String): String {
-        return "$catCodeHead$type$CAT_END"
-    }
+    fun toCat(typeParam: ToCatParam): String
+
+
+    /**
+     * 仅通过一个类型获取一个猫猫码。例如`\[Cat:hi]`
+     */
+    @kotlin.js.JsName("toCatEmpty")
+    fun toCat(type: String): String
 
     /**
      * 将参数转化为猫猫码字符串.
@@ -119,12 +156,19 @@ public interface NekoAibo
     @kotlin.js.JsName("toCatByParams")
     fun toCat(type: String, encode: Boolean = true, vararg params: String): String
 
+
+    /**
+     * 通过完整参数构建一个 [Neko] 实例。
+     */
+    @kotlin.js.JsName("toNeko")
+    fun toNeko(typeParam: ToCatParam): Neko
+
     /**
      * 获取无参数的[Neko]
      * @param type 猫猫码的类型
      */
-    @kotlin.js.JsName("toNeko")
-    fun toNeko(type: String): Neko = EmptyNeko(type)
+    @kotlin.js.JsName("toNekoEmpty")
+    fun toNeko(type: String): Neko
 
     /**
      * 根据[Map]类型参数转化为[Neko]实例
@@ -549,41 +593,17 @@ internal class NekoAiboImpl(codeType: String) : NekoAibo {
     override val catCodeHead: String = catHead(codeType)
 
     /**
-    //  *  获取一个String为载体的[模板][CodeTemplate]
-    //  *  @see StringTemplate
-    //  */
-    // @kotlin.js.JsName("stringTemplate")
-    // abstract val stringTemplate: CodeTemplate<String>
-    //
-    // /**
-    //  *  获取[Neko]为载体的[模板][CodeTemplate]
-    //  *  @see NekoTemplate
-    //  */
-    // @kotlin.js.JsName("nekoTemplate")
-    // abstract val nekoTemplate: CodeTemplate<Neko>
-    //
-    // /**
-    //  * 构建一个String为载体类型的[构建器][CodeBuilder]
-    //  */
-    // @kotlin.js.JsName("getStringCodeBuilder")
-    // abstract fun getStringCodeBuilder(type: String, encode: Boolean = true): CodeBuilder<String>
-    //
-    //
-    // /**
-    //  * 构建一个[Neko]为载体类型的[构建器][CodeBuilder]
-    //  * @param encode 时候对value参数进行转义。
-    //  * @param lazy 构建结果是否为 lazy neko。
-    //  */
-    // @kotlin.js.JsName("getNekoBuilder")
-    // abstract fun getNekoBuilder(type: String, encode: Boolean): CodeBuilder<Neko>
-    //
-    // /**
-    //  * 构建一个[Neko]为载体类型的[构建器][CodeBuilder]
-    //  * @param encode 时候对value参数进行转义。
-    //  * @param lazy 构建结果是否为 lazy neko。
-    //  */
-    // @kotlin.js.JsName("getLazyNekoBuilder")
-    // abstract fun getLazyNekoBuilder(type: String, encode: Boolean): LazyCodeBuilder<Neko>
+     * 通过完整参数构建一个猫猫码。参数中，[ToCatParam.type] 不可忽略。
+     */
+    override fun toCat(typeParam: ToCatParam): String {
+        return with(typeParam) {
+            if (params.isEmpty()) {
+                toCat(type)
+            } else {
+                toCat(type, encode, *params)
+            }
+        }
+    }
 
 
     /**
@@ -666,6 +686,19 @@ internal class NekoAiboImpl(codeType: String) : NekoAibo {
             }
         } else {
             "$catCodeHead$type$CAT_END"
+        }
+    }
+
+    /**
+     * 通过完整参数构建一个 [Neko] 实例。
+     */
+    override fun toNeko(typeParam: ToCatParam): Neko {
+        return with(typeParam) {
+            if (params.isEmpty()) {
+                toNeko(type)
+            } else {
+                toNeko(type, *params)
+            }
         }
     }
 

@@ -112,14 +112,14 @@ public interface Neko : NekoMap<String, String>, CharSequence {
         /**
          * 得到一个空参的[Neko]实例。
          */
-        @kotlin.jvm.JvmStatic
+        // @kotlin.jvm.JvmStatic
         @kotlin.js.JsName("ofType")
         fun ofType(type: String): Neko = EmptyNeko(type)
 
         /**
          * 通过猫猫码字符串得到一个[Neko]实例
          */
-        @kotlin.jvm.JvmStatic
+        // @kotlin.jvm.JvmStatic
         @kotlin.js.JsName("of")
         fun of(code: String): Neko = Nyanko.byCode(code)
     }

@@ -227,7 +227,7 @@ internal constructor(protected val codeType: String) {
      * @param postMap 后置转化函数
      * @since 1.8.0
      */
-    @kotlin.js.JsName("splitWithMap")
+    @kotlin.js.JsName("splitWithMapper")
     fun <T> split(text: String, postMap: String.() -> T): List<T> {
         // 准备list
         val list: MutableList<T> = mutableListOf()
@@ -278,6 +278,7 @@ internal constructor(protected val codeType: String) {
      * @since 1.1-1.11
      */
     @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("getCatWithType")
     fun getCat(text: String, type: String = "", index: Int = 0): String? {
         if (index < 0) {
             throw IndexOutOfBoundsException("$index")
@@ -313,6 +314,7 @@ internal constructor(protected val codeType: String) {
      * @param index 第几个索引位的猫猫码，默认为0，即第一个
      * @since 1.1-1.11
      */
+    @kotlin.js.JsName("getCat")
     fun getCat(text: String, index: Int = 0): String? = getCat(text = text, type = "", index = index)
 
 
@@ -321,6 +323,7 @@ internal constructor(protected val codeType: String) {
      * @since 1.1-1.11
      */
     @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("getCats")
     fun getCats(text: String, type: String = ""): List<String> = getCats(text, type) { it }
 
     /**
@@ -328,6 +331,7 @@ internal constructor(protected val codeType: String) {
      * @since 1.8.0
      */
     @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("getCatsWithMapper")
     fun <T> getCats(text: String, type: String = "", map: (String) -> T): List<T> {
         var ti: Int
         var e = 0
@@ -358,6 +362,7 @@ internal constructor(protected val codeType: String) {
      * 默认情况下获取第一个猫猫码的参数
      * @since 1.1-1.11
      */
+    @kotlin.js.JsName("getParam")
     fun getParam(text: String, paramKey: String, index: Int = 0): String? =
         getParam(text = text, paramKey = paramKey, type = "", index = index)
 
@@ -374,6 +379,7 @@ internal constructor(protected val codeType: String) {
      *
      */
     @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("getParamWithType")
     fun getParam(text: String, type: String = "", paramKey: String, index: Int = 0): String? {
         val catHead = catCodeHead + type
         val catEnd = CAT_END
@@ -424,6 +430,7 @@ internal constructor(protected val codeType: String) {
      * @param type 要获取的猫猫码的类型，如果为空字符串则视为所有，默认为所有。
      */
     @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("getCatIterWithType")
     fun getCatIter(text: String, type: String = ""): Iterator<String> = CatTextIterator(text, type)
 
 
@@ -432,6 +439,7 @@ internal constructor(protected val codeType: String) {
      * @param code 猫猫码字符串
      * @since 1.8.0
      */
+    @kotlin.js.JsName("getCatKeyIter")
     fun getCatKeyIter(code: String): Iterator<String> = CatParamKeyIterator(code)
 
     /**
@@ -439,6 +447,7 @@ internal constructor(protected val codeType: String) {
      * @param code 猫猫码字符串
      * @since 1.8.0
      */
+    @kotlin.js.JsName("getCatValueIter")
     fun getCatValueIter(code: String): Iterator<String> = CatParamValueIterator(code)
 
 
@@ -447,6 +456,7 @@ internal constructor(protected val codeType: String) {
      * @param code 猫猫码字符串
      * @since 1.8.0
      */
+    @kotlin.js.JsName("getCatKVIter")
     fun getCatKVIter(code: String): Iterator<CatKV<String, String>> = CatParamKVIterator(code)
 
 
@@ -457,6 +467,7 @@ internal constructor(protected val codeType: String) {
      * @param type 要获取的猫猫码的类型，如果为空字符串则视为所有，默认为所有。
      */
     @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("getNekoList")
     open fun getNekoList(text: String, type: String = ""): List<Neko> {
         val iter: Iterator<String> = getCatIter(text, type)
         val list: MutableList<Neko> = mutableListOf()
@@ -472,6 +483,7 @@ internal constructor(protected val codeType: String) {
      * @param index 获取的索引位的猫猫码，默认为0，即第一个
      */
     @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("getNekoWithType")
     open fun getNeko(text: String, type: String = "", index: Int = 0): Neko? {
         val cat: String = getCat(text, type, index) ?: return null
         return Neko.of(cat)
@@ -481,6 +493,7 @@ internal constructor(protected val codeType: String) {
      * 获取指定索引位的猫猫码，并封装为[Neko]实例。
      */
     @Suppress("MemberVisibilityCanBePrivate")
+    @kotlin.js.JsName("getNeko")
     open fun getNeko(text: String, index: Int = 0): Neko? = getNeko(text = text, type = "", index = index)
 
     /**
@@ -589,6 +602,7 @@ internal constructor(protected val codeType: String) {
      * @param delimiter 切割字符串
      */
     @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("remove")
     fun remove(
         text: String,
         trim: Boolean = true,
@@ -608,6 +622,7 @@ internal constructor(protected val codeType: String) {
      * @param delimiter 切割字符串
      */
     @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("removeByType")
     fun removeByType(
         text: String,
         type: String,
@@ -677,6 +692,7 @@ internal constructor(protected val codeType: String) {
      *
      * @see contains
      */
+    @kotlin.js.JsName("contains")
     fun contains(
         text: String,
         type: String,
@@ -692,6 +708,7 @@ internal constructor(protected val codeType: String) {
      * @param params 要匹配的参数列表。由于是键值对，因此必须是2的倍数。
      */
     @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("containsByParams")
     fun contains(
         text: String,
         type: String = "",
@@ -726,6 +743,7 @@ internal constructor(protected val codeType: String) {
      * @param text 正文文本。
      * @param params 要匹配的参数列表。
      */
+    @kotlin.js.JsName("containsByKV")
     fun contains(
         text: String,
         type: String = "",

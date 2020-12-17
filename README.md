@@ -26,6 +26,8 @@
 </div>   
 
 
+> 本仓库 ([CatCode-multiplatform](https://github.com/ForteScarlet/CatCode-multiplatform)) 未来将会合并为 [CatCode](https://github.com/ForteScarlet/CatCode) 主仓库，并删除当前仓库。
+
 
 
 
@@ -244,6 +246,52 @@ final Neko alAll = NekoObjects.getNekoAtAll();
 #### 3. 通过工具类获取
 ```java
 CatCodeUtil.toCat("at", "qq=123")
+```
+
+### JS
+#### 1. 通过CatCodeUtil构建Cat码字符串
+```js
+    // 获取CatCode库入口
+    const cat = CatCode.catcode
+
+    const img = cat.CatCodeUtil.toCat({
+        type: "img",
+        params: [
+            { key: "url", value: "http://baidu.com" },
+            { key: "id", value: "a-b-c-d" }
+        ]
+    })
+    
+    console.log(img)
+```
+
+#### 2. 通过CatCodeUtil构建Cat码封装实例：`Neko`
+```js
+    // 获取CatCode库入口
+    const cat = CatCode.catcode
+
+    const img = cat.CatCodeUtil.toNeko({
+        type: "img",
+        params: [
+            { key: "url", value: "http://baidu.com" },
+            { key: "id", value: "a-b-c-d" }
+        ]
+    })
+    
+    console.log(img)
+    console.log(img.get("url"))
+```
+
+
+### Native
+
+#### C/C++
+
+> 注①：kotlin提供的动态库编译结果在调用的时候并不是十分顺手，因此建议通过c/c++编写一个桥梁库（lib-bridge）以简化后续开发。
+
+```C
+// 待续...
+
 ```
 
 

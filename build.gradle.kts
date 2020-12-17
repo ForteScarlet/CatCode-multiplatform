@@ -24,7 +24,6 @@ kotlin {
     js(LEGACY) { // xxx.jar
     // js(IR) {
         browser {
-            // useCommonJs()
             testTask {
                 useKarma {
                     useChromeHeadless()

@@ -152,7 +152,7 @@ public interface NekoAibo
      */
     // @kotlin.jvm.JvmOverloads
     @kotlin.js.JsName("toNekoByParams")
-    open fun toNeko(type: String, encode: Boolean = false, vararg paramText: String): Neko
+    fun toNeko(type: String, encode: Boolean = false, vararg paramText: String): Neko
 
     /**
      * 将一段字符串根据字符串与猫猫码来进行切割。

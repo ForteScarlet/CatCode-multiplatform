@@ -10,10 +10,7 @@
  *
  */
 
-package love.forte.catcode
-
-import love.forte.catcode.codes.MapNeko
-import love.forte.catcode.collection.set
+package catcode
 
 
 /**

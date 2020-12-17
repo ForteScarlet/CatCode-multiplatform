@@ -13,10 +13,10 @@
 @file:Suppress("unused")
 @file:kotlin.jvm.JvmName("NekoCodes")
 @file:kotlin.jvm.JvmMultifileClass
-package love.forte.catcode.codes
+package catcode.codes
 
-import love.forte.catcode.*
-import love.forte.catcode.collection.*
+import catcode.*
+import catcode.collection.*
 
 
 private val MAP_SPLIT_REGEX = Regex(CAT_KV)
@@ -43,7 +43,7 @@ protected constructor(private val params: LazyMap<String, String>, override var 
     constructor(type: String, params: Map<String, String>) : this(params.toLazyMap(), type)
     constructor(type: String, vararg params: CatKV<String, String>) : this(mapOf(*params.toPair()).toLazyMap(), type)
     constructor(type: String, vararg params: String) : this(mapOf(*params.map {
-        val split = it.split(delimiters = CAT_KV_SPLIT_ARRAY, false, 2)
+        val split = it.split(ignoreCase = false, limit = 2, delimiters = CAT_KV_SPLIT_ARRAY)
         split[0] to split[1]
     }.toTypedArray()).toLazyMap(), type)
 
@@ -274,7 +274,7 @@ private constructor(private val params: MutableLazyMap<String, String>, type: St
     constructor(type: String, params: Map<String, String>) : this(params.toMutableLazyMap(), type)
     constructor(type: String, vararg params: CatKV<String, String>) : this(mutableMapOf(*params.toPair()).toMutableLazyMap(), type)
     constructor(type: String, vararg params: String) : this(mutableMapOf(*params.map {
-        val split = it.split(delimiters = CAT_KV_SPLIT_ARRAY, false, 2)
+        val split = it.split(ignoreCase = false, limit = 2, delimiters = CAT_KV_SPLIT_ARRAY)
         split[0] to split[1]
     }.toTypedArray()).toMutableLazyMap(), type)
 

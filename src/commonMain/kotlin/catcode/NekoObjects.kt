@@ -10,9 +10,9 @@
  *
  */
 @file:kotlin.jvm.JvmName("NekoObjects")
-package love.forte.catcode
+package catcode
 
-import love.forte.catcode.codes.Nyanko
+import catcode.codes.Nyanko
 
 /*
     提供一些可以作为单例使用的[KQCode]实例

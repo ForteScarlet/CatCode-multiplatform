@@ -10,10 +10,10 @@
  *
  */
 
-package love.forte.catcode
+package catcode
 
-import love.forte.catcode.codes.MapNeko
-import love.forte.catcode.codes.Nyanko
+import catcode.codes.MapNeko
+import catcode.codes.Nyanko
 
 /**
  *
@@ -32,17 +32,20 @@ internal constructor(protected val codeType: String) {
      *  获取一个String为载体的[模板][CodeTemplate]
      *  @see StringTemplate
      */
+    @kotlin.js.JsName("stringTemplate")
     abstract val stringTemplate: CodeTemplate<String>
 
     /**
      *  获取[Neko]为载体的[模板][CodeTemplate]
      *  @see NekoTemplate
      */
+    @kotlin.js.JsName("nekoTemplate")
     abstract val nekoTemplate: CodeTemplate<Neko>
 
     /**
      * 构建一个String为载体类型的[构建器][CodeBuilder]
      */
+    @kotlin.js.JsName("getStringCodeBuilder")
     abstract fun getStringCodeBuilder(type: String, encode: Boolean = true): CodeBuilder<String>
 
 
@@ -51,6 +54,7 @@ internal constructor(protected val codeType: String) {
      * @param encode 时候对value参数进行转义。
      * @param lazy 构建结果是否为 lazy neko。
      */
+    @kotlin.js.JsName("getNekoBuilder")
     abstract fun getNekoBuilder(type: String, encode: Boolean): CodeBuilder<Neko>
 
     /**
@@ -58,12 +62,14 @@ internal constructor(protected val codeType: String) {
      * @param encode 时候对value参数进行转义。
      * @param lazy 构建结果是否为 lazy neko。
      */
+    @kotlin.js.JsName("getLazyNekoBuilder")
     abstract fun getLazyNekoBuilder(type: String, encode: Boolean): LazyCodeBuilder<Neko>
 
 
     /**
      * 仅通过一个类型获取一个猫猫码。例如`\[Cat:hi]`
      */
+    @kotlin.js.JsName("toCat")
     fun toCat(type: String): String {
         return "$catCodeHead$type$CAT_END"
     }
@@ -75,6 +81,7 @@ internal constructor(protected val codeType: String) {
      * @since 1.0-1.11
      */
     @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("toCatByKV")
     fun toCat(type: String, encode: Boolean = true, vararg kv: CatKV<String, *>): String {
         val pre = "$catCodeHead$type"
         return if (kv.isNotEmpty()) {
@@ -96,6 +103,7 @@ internal constructor(protected val codeType: String) {
      * @since 1.0-1.11
      */
     @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("toCatByMap")
     fun toCat(type: String, encode: Boolean = true, map: Map<String, *>): String {
         val pre = "$catCodeHead$type"
         return if (map.isNotEmpty()) {
@@ -123,12 +131,13 @@ internal constructor(protected val codeType: String) {
      * @since 1.8.0
      */
     @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("toCatByParams")
     fun toCat(type: String, encode: Boolean = true, vararg params: String): String {
         // 如果参数为空
         return if (params.isNotEmpty()) {
             if (encode) {
                 toCat(type, encode, *params.mapNotNull {
-                    val split: List<String> = it.split(delimiters = CAT_KV_SPLIT_ARRAY, false, 2)
+                    val split: List<String> = it.split(ignoreCase = false, limit = 2, delimiters = CAT_KV_SPLIT_ARRAY)
                     val k: String = split[0]
                     val v: String = split[1]
                     if (v.isNotBlank()) k cTo v else null
@@ -151,6 +160,7 @@ internal constructor(protected val codeType: String) {
      * 获取无参数的[Neko]
      * @param type 猫猫码的类型
      */
+    @kotlin.js.JsName("toNeko")
     open fun toNeko(type: String): Neko = EmptyNeko(type)
 
     /**
@@ -159,6 +169,7 @@ internal constructor(protected val codeType: String) {
      * @param type 猫猫码的类型
      * @param params 参数列表
      */
+    @kotlin.js.JsName("toNekoByMap")
     open fun toNeko(type: String, params: Map<String, *>): Neko {
         return if (params.isEmpty()) {
             toNeko(type)
@@ -173,6 +184,7 @@ internal constructor(protected val codeType: String) {
      * @param type 猫猫码的类型
      * @param params 参数列表
      */
+    @kotlin.js.JsName("toNekoByKV")
     open fun toNeko(type: String, vararg params: CatKV<String, *>): Neko {
         return if (params.isEmpty()) {
             toNeko(type)
@@ -188,6 +200,7 @@ internal constructor(protected val codeType: String) {
      * @param paramText 参数列表, 例如："code=123"
      */
     @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("toNekoByParams")
     open fun toNeko(type: String, encode: Boolean = false, vararg paramText: String): Neko {
         return if (paramText.isEmpty()) {
             toNeko(type)
@@ -201,6 +214,7 @@ internal constructor(protected val codeType: String) {
      * 不会有任何转义操作。
      * @since 1.1-1.11
      */
+    @kotlin.js.JsName("split")
     fun split(text: String): List<String> = split(text) { this }
 
     /**
@@ -213,6 +227,7 @@ internal constructor(protected val codeType: String) {
      * @param postMap 后置转化函数
      * @since 1.8.0
      */
+    @kotlin.js.JsName("splitWithMap")
     fun <T> split(text: String, postMap: String.() -> T): List<T> {
         // 准备list
         val list: MutableList<T> = mutableListOf()
@@ -434,18 +449,6 @@ internal constructor(protected val codeType: String) {
      */
     fun getCatKVIter(code: String): Iterator<CatKV<String, String>> = CatParamKVIterator(code)
 
-
-    /**
-     * @see getCats
-     */
-    @Suppress("DEPRECATION")
-    @Deprecated("param 'decode' not required.")
-    open fun getNekoList(text: String, type: String, decode: Boolean): List<Neko> {
-        val iter = getCatIter(text, type)
-        val list = mutableListOf<Neko>()
-        iter.forEach { list.add(Neko.of(it, decode)) }
-        return list
-    }
 
     /**
      * 以[getCatIter]方法为基础获取字符串中全部的[Neko]对象

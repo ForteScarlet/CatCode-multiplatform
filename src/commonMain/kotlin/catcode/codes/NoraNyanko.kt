@@ -11,10 +11,10 @@
  */
 @file:kotlin.jvm.JvmName("NekoCodes")
 @file:kotlin.jvm.JvmMultifileClass
-package love.forte.catcode.codes
+package catcode.codes
 
-import love.forte.catcode.*
-import love.forte.catcode.collection.mapDelegation
+import catcode.*
+import catcode.collection.mapDelegation
 
 
 /**

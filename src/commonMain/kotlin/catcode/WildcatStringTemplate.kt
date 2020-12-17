@@ -10,9 +10,9 @@
  * QQ     1149159218
  */
 
-package love.forte.catcode
+package catcode
 
-import love.forte.catcode.codes.NoraNyanko
+import catcode.codes.NoraNyanko
 
 
 /**
@@ -24,7 +24,8 @@ public interface WildcatTemplate<T> : CodeTemplate<T>
 /**
  * 野良猫的 [CodeTemplate] 模板实现，以字符串为载体。
  */
-public class WildcatStringTemplate(codeType: String, private val utilInstance: WildcatCodeUtil) : WildcatTemplate<String> {
+public class WildcatStringTemplate(val codeType: String, private val utilInstance: WildcatCodeUtil) :
+    WildcatTemplate<String> {
 
 
     /**
@@ -223,7 +224,8 @@ public class WildcatStringTemplate(codeType: String, private val utilInstance: W
 /**
  * 野良猫码以 [Neko] 作为载体的 [CodeTemplate] 实现。
  */
-public class NoraNekoTemplate(codeType: String, private val wildcatStringTemplate: WildcatTemplate<String>) : WildcatTemplate<Neko> {
+public class NoraNekoTemplate(val codeType: String, private val wildcatStringTemplate: WildcatTemplate<String>) :
+    WildcatTemplate<Neko> {
 
 
     /**

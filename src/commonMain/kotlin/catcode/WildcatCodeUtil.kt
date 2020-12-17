@@ -11,10 +11,10 @@
  */
 
 
-package love.forte.catcode
+package catcode
 
-import love.forte.catcode.codes.MapNoraNeko
-import love.forte.catcode.codes.NoraNyanko
+import catcode.codes.MapNoraNeko
+import catcode.codes.NoraNyanko
 
 
 /**
@@ -92,13 +92,13 @@ private constructor(codeType: String) : NekoAibo(codeType) {
     /**
      * 根据参数转化为[Neko]实例
      * @param type 猫猫码的类型
-     * @param kv 参数列表
+     * @param params 参数列表
      */
-    override fun toNeko(type: String, vararg kv: CatKV<String, *>): NoraNeko {
-        return if (kv.isEmpty()) {
+    override fun toNeko(type: String, vararg params: CatKV<String, *>): NoraNeko {
+        return if (params.isEmpty()) {
             toNeko(type)
         } else {
-            MapNoraNeko.byMap(codeType, type, kv.asSequence().map { it.key to it.value.toString() }.toMap())
+            MapNoraNeko.byMap(codeType, type, params.asSequence().map { it.key to it.value.toString() }.toMap())
         }
     }
 

@@ -13,13 +13,13 @@
 @file:Suppress("unused")
 @file:kotlin.jvm.JvmName("NekoCodes")
 @file:kotlin.jvm.JvmMultifileClass
-package love.forte.catcode.codes
+package catcode.codes
 
-import love.forte.catcode.*
-import love.forte.catcode.collection.LazyMap
-import love.forte.catcode.collection.MutableLazyMap
-import love.forte.catcode.collection.toLazyMap
-import love.forte.catcode.collection.toMutableLazyMap
+import catcode.*
+import catcode.collection.LazyMap
+import catcode.collection.MutableLazyMap
+import catcode.collection.toLazyMap
+import catcode.collection.toMutableLazyMap
 
 
 private val MAP_SPLIT_REGEX = Regex(CAT_KV)
@@ -46,7 +46,7 @@ protected constructor(override val codeType: String, private val params: LazyMap
     constructor(codeType: String, type: String, params: Map<String, String>) : this(codeType, params.toLazyMap(), type)
     constructor(codeType: String, type: String, vararg params: CatKV<String, String>) : this(codeType, mapOf(*params.toPair()).toLazyMap(), type)
     constructor(codeType: String, type: String, vararg params: String) : this(codeType, mapOf(*params.map {
-        val split = it.split(delimiters = CAT_KV_SPLIT_ARRAY, false, 2)
+        val split = it.split(ignoreCase = false, limit = 2, delimiters = CAT_KV_SPLIT_ARRAY)
         split[0] to split[1]
     }.toTypedArray()).toLazyMap(), type)
 
@@ -262,7 +262,7 @@ private constructor(codeType: String, protected override val params: MutableLazy
     constructor(codeType: String, type: String, params: Map<String, String>) : this(codeType, params.toMutableLazyMap(), type)
     constructor(codeType: String, type: String, vararg params: CatKV<String, String>) : this(codeType, mutableMapOf(*params.toPair()).toMutableLazyMap(), type)
     constructor(codeType: String, type: String, vararg params: String) : this(codeType, mutableMapOf(*params.map {
-        val split = it.split(delimiters = CAT_KV_SPLIT_ARRAY, false, 2)
+        val split = it.split(ignoreCase = false, limit = 2, delimiters = CAT_KV_SPLIT_ARRAY)
         split[0] to split[1]
     }.toTypedArray()).toMutableLazyMap(), type)
 

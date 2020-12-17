@@ -9,10 +9,13 @@ repositories {
     mavenCentral()
 }
 
+
 kotlin {
     jvm {
         compilations.all {
+            compileKotlinTask.javaPackagePrefix = "love.forte"
             kotlinOptions.jvmTarget = "1.8"
+            kotlinOptions.javaParameters = true
         }
         testRuns["test"].executionTask.configure {
             useJUnit()

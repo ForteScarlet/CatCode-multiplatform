@@ -13,12 +13,12 @@
 @file:Suppress("unused")
 @file:kotlin.jvm.JvmName("CatSymbolConstant")
 
-package love.forte.catcode
+package catcode
 
-import love.forte.catcode.codes.MapNeko
-import love.forte.catcode.codes.Nyanko
-import love.forte.catcode.collection.MutableNekoMap
-import love.forte.catcode.collection.NekoMap
+import catcode.codes.MapNeko
+import catcode.codes.Nyanko
+import catcode.collection.MutableNekoMap
+import catcode.collection.NekoMap
 
 
 public const val CAT_TYPE = "CAT"
@@ -87,11 +87,13 @@ public interface Neko : NekoMap<String, String>, CharSequence {
      * 获取转义前的值。一般普通的[get]方法得到的是反转义后的。
      * 此处为保留原本的值不做转义。
      */
+    @kotlin.js.JsName("getNoDecode")
     fun getNoDecode(key: String): String?
 
     /**
      * 与其他字符序列拼接为[Msgs]实例
      */
+    @kotlin.js.JsName("plus")
     operator fun plus(other: CharSequence): Msgs = Msgs(collection = listOf(this, other))
 
     /**
@@ -111,30 +113,15 @@ public interface Neko : NekoMap<String, String>, CharSequence {
          * 得到一个空参的[Neko]实例。
          */
         @kotlin.jvm.JvmStatic
+        @kotlin.js.JsName("ofType")
         fun ofType(type: String): Neko = EmptyNeko(type)
 
         /**
          * 通过猫猫码字符串得到一个[Neko]实例
          */
         @kotlin.jvm.JvmStatic
+        @kotlin.js.JsName("of")
         fun of(code: String): Neko = Nyanko.byCode(code)
-
-        /**
-         * 从猫猫码字符串转到KQCode
-         *
-         * 默认使用[Nyanko]作为静态工厂方法的[Neko]实例载体。
-         * [Nyanko]是以字符串操作为基础的，因此不需要进行额外的转义。
-         *
-         * @since 1.1-1.11
-         * @since 1.8.0
-         * @param text 猫猫码字符串的正文
-         * @param decode 因为这段猫猫码字符串可能已经转义过了，此处是否指定其转化的时候解码一次。默认为true
-         */
-        @kotlin.jvm.JvmStatic
-        @Deprecated("just use of(text)", ReplaceWith("FastKQCode(text)", "com.simplerobot.modules.utils.FastKQCode"))
-        fun of(text: String, decode: Boolean = true): Neko {
-            return Nyanko.byCode(text)
-        }
     }
 
 

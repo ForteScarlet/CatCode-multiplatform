@@ -12,13 +12,13 @@
 
 @file:Suppress("RedundantInnerClassModifier", "RedundantVisibilityModifier")
 
-package love.forte.catcode
+package catcode
 
-import love.forte.catcode.CodeBuilder.CodeBuilderKey
-import love.forte.catcode.codes.LazyMapNeko
-import love.forte.catcode.codes.MapNeko
-import love.forte.catcode.collection.MutableLazyMap
-import love.forte.catcode.collection.asLazyMap
+import catcode.CodeBuilder.CodeBuilderKey
+import catcode.codes.LazyMapNeko
+import catcode.codes.MapNeko
+import catcode.collection.MutableLazyMap
+import catcode.collection.asLazyMap
 
 /**
  *

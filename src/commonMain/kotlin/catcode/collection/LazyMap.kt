@@ -11,7 +11,7 @@
  */
 
 @file:kotlin.jvm.JvmName("LazyMaps")
-package love.forte.catcode.collection
+package catcode.collection
 
 
 

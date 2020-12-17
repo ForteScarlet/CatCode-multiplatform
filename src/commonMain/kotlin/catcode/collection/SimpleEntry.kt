@@ -1,4 +1,4 @@
-package love.forte.catcode.collection
+package catcode.collection
 
 
 /** Simple entry implementation. */

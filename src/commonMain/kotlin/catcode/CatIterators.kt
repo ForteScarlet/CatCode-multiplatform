@@ -10,7 +10,7 @@
  *
  */
 
-package love.forte.catcode
+package catcode
 
 
 /**
@@ -152,7 +152,7 @@ internal class CatParamValueIterator(code: String): BaseCatIterator<String>(code
         if(nextSplit < 0){
             nextSplit = code.lastIndex
         }
-        return CatDecoder.decodeParams(code.substring(index+1, nextSplit))
+        return CatDecoder.decodeParams(code.substring(index + 1, nextSplit))
     }
 
 }

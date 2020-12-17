@@ -1,5 +1,5 @@
 @file:kotlin.jvm.JvmName("NoNeedInitializeLazies")
-package love.forte.catcode.collection
+package catcode.collection
 
 
 /**

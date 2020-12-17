@@ -12,7 +12,7 @@
 
 @file:Suppress("unused")
 @file:kotlin.jvm.JvmName("Cats")
-package love.forte.catcode
+package catcode
 
 /*
 & -> &amp;
@@ -38,6 +38,7 @@ object CatDecoder {
         get() = this
 
     /** 非猫猫码文本消息解义 */
+    @kotlin.js.JsName("decodeText")
     fun decodeText(str: String): String =
         str .replace("&#91;", "[")
             .replace("&#93;", "]")
@@ -47,10 +48,12 @@ object CatDecoder {
             .replace("&amp;", "&")
 
     /** 非猫猫码文本消息解义，如果[str]为null则返回null */
+    @kotlin.js.JsName("decodeTextOrNull")
     fun decodeTextOrNull(str: String?) : String? = str?.let { decodeText(it) }
 
 
     /** 猫猫码参数值消息解义 */
+    @kotlin.js.JsName("decodeParams")
     fun decodeParams(str: String): String =
         str .replace("&#91;", "[")
             .replace("&#93;", "]")
@@ -61,6 +64,7 @@ object CatDecoder {
             .replace("&amp;", "&")
 
     /** 猫猫码参数值消息解义，如果[str]为null则返回null */
+    @kotlin.js.JsName("decodeParamsOrNull")
     fun decodeParamsOrNull(str: String?): String? = str?.let { decodeParams(it) }
 
 }
@@ -79,6 +83,7 @@ object CatEncoder {
         get() = this
 
     /** 非猫猫码文本消息转义 */
+    @kotlin.js.JsName("encodeText")
     fun encodeText(str: String): String =
         str.replace("&", "&amp;")
             .replace("[", "&#91;")
@@ -88,9 +93,11 @@ object CatEncoder {
             .replace("\n", "&#13;")
 
     /** 非猫猫码文本消息转义。如果[str]为null则返回null */
+    @kotlin.js.JsName("encodeTextOrNull")
     fun encodeTextOrNull(str: String?): String? = str?.let { encodeText(it) }
 
     /** 猫猫码参数值消息转义 */
+    @kotlin.js.JsName("encodeParams")
     fun encodeParams(str: String): String =
         str.replace("&", "&amp;")
             .replace("[", "&#91;")
@@ -101,6 +108,7 @@ object CatEncoder {
             .replace("\n", "&#13;")
 
     /** 猫猫码参数值消息转义。如果[str]为null则返回null */
+    @kotlin.js.JsName("encodeParamsOrNull")
     fun encodeParamsOrNull(str: String?): String? = str?.let { encodeParams(it) }
 
 }

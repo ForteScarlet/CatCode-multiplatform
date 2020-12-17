@@ -10,10 +10,10 @@
  * QQ     1149159218
  */
 
-package love.forte.catcode
+package catcode
 
-import love.forte.catcode.codes.MapNeko
-import love.forte.catcode.collection.MutableLazyMap
+import catcode.codes.MapNeko
+import catcode.collection.MutableLazyMap
 
 /**
  * 野猫码构建器。

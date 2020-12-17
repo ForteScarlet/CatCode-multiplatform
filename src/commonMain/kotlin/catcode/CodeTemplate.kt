@@ -13,9 +13,9 @@
 
 @file:Suppress("unused")
 
-package love.forte.catcode
+package catcode
 
-import love.forte.catcode.codes.Nyanko
+import catcode.codes.Nyanko
 
 /**
  * 定义特殊码的一些模板方法，例如at等。

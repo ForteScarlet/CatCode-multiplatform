@@ -10,7 +10,7 @@
  * QQ     1149159218
  */
 @file:kotlin.jvm.JvmName("CatKVs")
-package love.forte.catcode
+package catcode
 
 
 /**

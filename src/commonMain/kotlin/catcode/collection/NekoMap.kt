@@ -10,7 +10,7 @@
  *
  */
 
-package love.forte.catcode.collection
+package catcode.collection
 
 /**
  * 一个类似[Map]的猫猫Map。
@@ -64,6 +64,7 @@ public interface NekoMap<K, out V> {
     /**
      * 获取某个键对应的值。
      */
+    @kotlin.js.JsName("get")
     operator fun get(key: K): V?
 
     /**

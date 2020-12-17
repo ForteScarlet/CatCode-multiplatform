@@ -10,7 +10,7 @@
  * QQ     1149159218
  */
 
-package love.forte.catcode
+package catcode
 
 
 

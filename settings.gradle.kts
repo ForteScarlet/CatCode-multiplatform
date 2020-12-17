@@ -1,3 +1,3 @@
 
-rootProject.name = "CatCode-multiplatform"
+rootProject.name = "CatCode"
 

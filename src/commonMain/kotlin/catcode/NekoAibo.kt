@@ -134,8 +134,15 @@ public interface NekoAibo
      * @since 1.0-1.11
      */
     @kotlin.js.JsName("toCatByKV")
-    fun toCat(type: String, encode: Boolean = true, vararg kv: CatKV<String, *>): String
+    fun toCat(type: String, encode: Boolean = false, vararg kv: CatKV<String, *>): String
 
+
+    /**
+     * 将参数转化为猫猫码字符串.
+     * 默认 `encode` == false
+     */
+    @kotlin.js.JsName("toCatByNoEncodeKV")
+    fun toCat(type: String, vararg key: CatKV<String, *>): String
 
 
     /**
@@ -144,7 +151,20 @@ public interface NekoAibo
      */
     // @kotlin.jvm.JvmOverloads
     @kotlin.js.JsName("toCatByMap")
-    fun toCat(type: String, encode: Boolean = true, map: Map<String, *>): String
+    fun toCat(type: String, encode: Boolean = false, map: Map<String, *>): String
+
+
+    /**
+     * 将参数转化为猫猫码字符串
+     * 默认 `encode` == false
+     *
+     * @since 1.0-1.11
+     */
+    // @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("toCatByNoEncodeMap")
+    fun toCat(type: String, map: Map<String, *>): String
+
+
 
     /**
      * 将参数转化为猫猫码字符串, [params]的格式应当是`xxx=xxx`
@@ -154,7 +174,17 @@ public interface NekoAibo
      */
     // @kotlin.jvm.JvmOverloads
     @kotlin.js.JsName("toCatByParams")
-    fun toCat(type: String, encode: Boolean = true, vararg params: String): String
+    fun toCat(type: String, encode: Boolean = false, vararg params: String): String
+
+
+    /**
+     * 将参数转化为猫猫码字符串, [params]的格式应当是`xxx=xxx`
+     * 默认`encode` == false
+     * @since 1.8.0
+     */
+    // @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("toCatByNoEncodeParams")
+    fun toCat(type: String, vararg params: String): String
 
 
     /**
@@ -197,6 +227,16 @@ public interface NekoAibo
     // @kotlin.jvm.JvmOverloads
     @kotlin.js.JsName("toNekoByParams")
     fun toNeko(type: String, encode: Boolean = false, vararg paramText: String): Neko
+
+
+    /**
+     * 根据参数转化为[Neko]实例
+     * @param type 猫猫码的类型
+     * @param paramText 参数列表, 例如："code=123"
+     */
+    // @kotlin.jvm.JvmOverloads
+    @kotlin.js.JsName("toNekoByNoEncodeParams")
+    fun toNeko(type: String, vararg paramText: String): Neko
 
     /**
      * 将一段字符串根据字符串与猫猫码来进行切割。
@@ -635,6 +675,15 @@ internal class NekoAiboImpl(codeType: String) : NekoAibo {
         }
     }
 
+
+    /**
+     * 将参数转化为猫猫码字符串.
+     * 默认 `encode` == true
+     */
+    override fun toCat(type: String, vararg key: CatKV<String, *>): String {
+        return toCat(type, false, *key)
+    }
+
     /**
      * 将参数转化为猫猫码字符串
      * @since 1.0-1.11
@@ -657,6 +706,17 @@ internal class NekoAiboImpl(codeType: String) : NekoAibo {
         } else {
             pre + CAT_END
         }
+    }
+
+
+    /**
+     * 将参数转化为猫猫码字符串
+     * 默认 `encode` == true
+     *
+     * @since 1.0-1.11
+     */
+    override fun toCat(type: String, map: Map<String, *>): String {
+        return toCat(type, false, map)
     }
 
     /**
@@ -688,6 +748,16 @@ internal class NekoAiboImpl(codeType: String) : NekoAibo {
             "$catCodeHead$type$CAT_END"
         }
     }
+
+    /**
+     * 将参数转化为猫猫码字符串, [params]的格式应当是`xxx=xxx`
+     * 默认`encode` == false
+     * @since 1.8.0
+     */
+    override fun toCat(type: String, vararg params: String): String {
+        return toCat(type, false, *params)
+    }
+
 
     /**
      * 通过完整参数构建一个 [Neko] 实例。
@@ -748,6 +818,16 @@ internal class NekoAiboImpl(codeType: String) : NekoAibo {
         } else {
             Nyanko.byCode(toCat(type, encode, *paramText))
         }
+    }
+
+
+    /**
+     * 根据参数转化为[Neko]实例
+     * @param type 猫猫码的类型
+     * @param paramText 参数列表, 例如："code=123"
+     */
+    override fun toNeko(type: String, vararg paramText: String): Neko {
+        return toNeko(type, false, *paramText)
     }
 
     /**

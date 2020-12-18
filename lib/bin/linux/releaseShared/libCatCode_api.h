@@ -62,37 +62,16 @@ typedef struct {
 } libCatCode_kref_catcode_BaseMutableNoraNeko;
 typedef struct {
   libCatCode_KNativePtr pinned;
-} libCatCode_kref_catcode_BuilderAble;
-typedef struct {
-  libCatCode_KNativePtr pinned;
-} libCatCode_kref_catcode_LazyCodeBuilder;
-typedef struct {
-  libCatCode_KNativePtr pinned;
-} libCatCode_kref_catcode_CodeBuilder;
-typedef struct {
-  libCatCode_KNativePtr pinned;
 } libCatCode_kref_catcode_CatCodeUtil;
 typedef struct {
   libCatCode_KNativePtr pinned;
 } libCatCode_kref_catcode_CodeTemplate;
 typedef struct {
   libCatCode_KNativePtr pinned;
-} libCatCode_kref_kotlin_Array;
+} libCatCode_kref_catcode_LazyCodeBuilder;
 typedef struct {
   libCatCode_KNativePtr pinned;
-} libCatCode_kref_kotlin_collections_Iterator;
-typedef struct {
-  libCatCode_KNativePtr pinned;
-} libCatCode_kref_kotlin_collections_List;
-typedef struct {
-  libCatCode_KNativePtr pinned;
-} libCatCode_kref_kotlin_CharSequence;
-typedef struct {
-  libCatCode_KNativePtr pinned;
-} libCatCode_kref_catcode_ToCatParam;
-typedef struct {
-  libCatCode_KNativePtr pinned;
-} libCatCode_kref_kotlin_collections_Map;
+} libCatCode_kref_catcode_CodeBuilder;
 typedef struct {
   libCatCode_KNativePtr pinned;
 } libCatCode_kref_catcode_CatDecoder;
@@ -114,6 +93,12 @@ typedef struct {
 typedef struct {
   libCatCode_KNativePtr pinned;
 } libCatCode_kref_catcode_MutableNeko;
+typedef struct {
+  libCatCode_KNativePtr pinned;
+} libCatCode_kref_kotlin_CharSequence;
+typedef struct {
+  libCatCode_KNativePtr pinned;
+} libCatCode_kref_kotlin_collections_Map;
 typedef struct {
   libCatCode_KNativePtr pinned;
 } libCatCode_kref_catcode_EmptyNoraNeko;
@@ -146,16 +131,25 @@ typedef struct {
 } libCatCode_kref_kotlin_collections_MutableListIterator;
 typedef struct {
   libCatCode_KNativePtr pinned;
+} libCatCode_kref_kotlin_collections_List;
+typedef struct {
+  libCatCode_KNativePtr pinned;
 } libCatCode_kref_kotlin_collections_MutableList;
 typedef struct {
   libCatCode_KNativePtr pinned;
 } libCatCode_kref_catcode_MutableNoraNeko;
 typedef struct {
   libCatCode_KNativePtr pinned;
-} libCatCode_kref_catcode_Neko_Construct;
+} libCatCode_kref_catcode_Neko_Of;
 typedef struct {
   libCatCode_KNativePtr pinned;
 } libCatCode_kref_catcode_NekoAibo;
+typedef struct {
+  libCatCode_KNativePtr pinned;
+} libCatCode_kref_kotlin_Array;
+typedef struct {
+  libCatCode_KNativePtr pinned;
+} libCatCode_kref_kotlin_collections_Iterator;
 typedef struct {
   libCatCode_KNativePtr pinned;
 } libCatCode_kref_catcode_NekoBuilder;
@@ -186,9 +180,6 @@ typedef struct {
 typedef struct {
   libCatCode_KNativePtr pinned;
 } libCatCode_kref_catcode_StringTemplate;
-typedef struct {
-  libCatCode_KNativePtr pinned;
-} libCatCode_kref_catcode_TemplateAble;
 typedef struct {
   libCatCode_KNativePtr pinned;
 } libCatCode_kref_catcode_WildcatCodeUtil;
@@ -306,48 +297,14 @@ typedef struct {
         } BaseMutableNoraNeko;
         struct {
           libCatCode_KType* (*_type)(void);
-          libCatCode_kref_catcode_LazyCodeBuilder (*getLazyNekoBuilder)(libCatCode_kref_catcode_BuilderAble thiz, const char* type, libCatCode_KBoolean encode);
-          libCatCode_kref_catcode_CodeBuilder (*getNekoBuilder)(libCatCode_kref_catcode_BuilderAble thiz, const char* type, libCatCode_KBoolean encode);
-          libCatCode_kref_catcode_CodeBuilder (*getStringCodeBuilder)(libCatCode_kref_catcode_BuilderAble thiz, const char* type, libCatCode_KBoolean encode);
-        } BuilderAble;
-        struct {
-          libCatCode_KType* (*_type)(void);
           libCatCode_kref_catcode_CatCodeUtil (*_instance)();
           const char* (*get_catCodeHead)(libCatCode_kref_catcode_CatCodeUtil thiz);
           libCatCode_kref_catcode_CatCodeUtil (*get_instance)(libCatCode_kref_catcode_CatCodeUtil thiz);
           libCatCode_kref_catcode_CodeTemplate (*get_nekoTemplate)(libCatCode_kref_catcode_CatCodeUtil thiz);
           libCatCode_kref_catcode_CodeTemplate (*get_stringTemplate)(libCatCode_kref_catcode_CatCodeUtil thiz);
-          libCatCode_KBoolean (*contains)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* text, const char* type, libCatCode_kref_kotlin_Array params);
-          libCatCode_KBoolean (*contains_)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* text, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array params);
-          libCatCode_KBoolean (*contains__)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* text, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array params);
-          const char* (*getCat)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* text, libCatCode_KInt index);
-          const char* (*getCat_)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* text, const char* type, libCatCode_KInt index);
-          libCatCode_kref_kotlin_collections_Iterator (*getCatIter)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* text, const char* type);
-          libCatCode_kref_kotlin_collections_Iterator (*getCatKVIter)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* code);
-          libCatCode_kref_kotlin_collections_Iterator (*getCatKeyIter)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* code);
-          libCatCode_kref_kotlin_collections_Iterator (*getCatValueIter)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* code);
-          libCatCode_kref_kotlin_collections_List (*getCats)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* text, const char* type);
           libCatCode_kref_catcode_LazyCodeBuilder (*getLazyNekoBuilder)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* type, libCatCode_KBoolean encode);
-          libCatCode_kref_catcode_Neko (*getNeko)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* text, libCatCode_KInt index);
-          libCatCode_kref_catcode_Neko (*getNeko_)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* text, const char* type, libCatCode_KInt index);
           libCatCode_kref_catcode_CodeBuilder (*getNekoBuilder)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* type, libCatCode_KBoolean encode);
-          libCatCode_kref_kotlin_collections_List (*getNekoList)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* text, const char* type);
-          const char* (*getParam)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* text, const char* paramKey, libCatCode_KInt index);
-          const char* (*getParam_)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* text, const char* type, const char* paramKey, libCatCode_KInt index);
           libCatCode_kref_catcode_CodeBuilder (*getStringCodeBuilder)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* type, libCatCode_KBoolean encode);
-          const char* (*remove)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* text, libCatCode_KBoolean trim, libCatCode_KBoolean ignoreEmpty, libCatCode_kref_kotlin_CharSequence delimiter);
-          const char* (*removeByType)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* text, const char* type, libCatCode_KBoolean trim, libCatCode_KBoolean ignoreEmpty, libCatCode_kref_kotlin_CharSequence delimiter);
-          libCatCode_kref_kotlin_collections_List (*split)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* text);
-          const char* (*toCat)(libCatCode_kref_catcode_CatCodeUtil thiz, libCatCode_kref_catcode_ToCatParam typeParam);
-          const char* (*toCat_)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* type);
-          const char* (*toCat__)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array kv);
-          const char* (*toCat___)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array params);
-          const char* (*toCat____)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_collections_Map map);
-          libCatCode_kref_catcode_Neko (*toNeko)(libCatCode_kref_catcode_CatCodeUtil thiz, libCatCode_kref_catcode_ToCatParam typeParam);
-          libCatCode_kref_catcode_Neko (*toNeko_)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* type);
-          libCatCode_kref_catcode_Neko (*toNeko__)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* type, libCatCode_kref_kotlin_Array params);
-          libCatCode_kref_catcode_Neko (*toNeko___)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array paramText);
-          libCatCode_kref_catcode_Neko (*toNeko____)(libCatCode_kref_catcode_CatCodeUtil thiz, const char* type, libCatCode_kref_kotlin_collections_Map params);
         } CatCodeUtil;
         struct {
           libCatCode_KType* (*_type)(void);
@@ -484,14 +441,17 @@ typedef struct {
           libCatCode_kref_catcode_Msgs (*plus)(libCatCode_kref_catcode_Neko thiz, libCatCode_kref_kotlin_CharSequence other);
           struct {
             libCatCode_KType* (*_type)(void);
-            libCatCode_kref_catcode_Neko_Construct (*_instance)();
-            libCatCode_kref_catcode_Neko (*byCode)(libCatCode_kref_catcode_Neko_Construct thiz, const char* code);
-            libCatCode_kref_catcode_Neko (*byType)(libCatCode_kref_catcode_Neko_Construct thiz, const char* type);
-          } Construct;
+            libCatCode_kref_catcode_Neko_Of (*_instance)();
+            libCatCode_kref_catcode_Neko (*of)(libCatCode_kref_catcode_Neko_Of thiz, const char* code);
+            libCatCode_kref_catcode_Neko (*ofType)(libCatCode_kref_catcode_Neko_Of thiz, const char* type);
+          } Of;
         } Neko;
         struct {
           libCatCode_KType* (*_type)(void);
           const char* (*get_catCodeHead)(libCatCode_kref_catcode_NekoAibo thiz);
+          const char* (*get_codeType)(libCatCode_kref_catcode_NekoAibo thiz);
+          libCatCode_kref_catcode_CodeTemplate (*get_nekoTemplate)(libCatCode_kref_catcode_NekoAibo thiz);
+          libCatCode_kref_catcode_CodeTemplate (*get_stringTemplate)(libCatCode_kref_catcode_NekoAibo thiz);
           libCatCode_KBoolean (*contains)(libCatCode_kref_catcode_NekoAibo thiz, const char* text, const char* type, libCatCode_kref_kotlin_Array params);
           libCatCode_KBoolean (*contains_)(libCatCode_kref_catcode_NekoAibo thiz, const char* text, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array params);
           libCatCode_KBoolean (*contains__)(libCatCode_kref_catcode_NekoAibo thiz, const char* text, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array params);
@@ -502,24 +462,25 @@ typedef struct {
           libCatCode_kref_kotlin_collections_Iterator (*getCatKeyIter)(libCatCode_kref_catcode_NekoAibo thiz, const char* code);
           libCatCode_kref_kotlin_collections_Iterator (*getCatValueIter)(libCatCode_kref_catcode_NekoAibo thiz, const char* code);
           libCatCode_kref_kotlin_collections_List (*getCats)(libCatCode_kref_catcode_NekoAibo thiz, const char* text, const char* type);
+          libCatCode_kref_catcode_LazyCodeBuilder (*getLazyNekoBuilder)(libCatCode_kref_catcode_NekoAibo thiz, const char* type, libCatCode_KBoolean encode);
           libCatCode_kref_catcode_Neko (*getNeko)(libCatCode_kref_catcode_NekoAibo thiz, const char* text, libCatCode_KInt index);
           libCatCode_kref_catcode_Neko (*getNeko_)(libCatCode_kref_catcode_NekoAibo thiz, const char* text, const char* type, libCatCode_KInt index);
+          libCatCode_kref_catcode_CodeBuilder (*getNekoBuilder)(libCatCode_kref_catcode_NekoAibo thiz, const char* type, libCatCode_KBoolean encode);
           libCatCode_kref_kotlin_collections_List (*getNekoList)(libCatCode_kref_catcode_NekoAibo thiz, const char* text, const char* type);
           const char* (*getParam)(libCatCode_kref_catcode_NekoAibo thiz, const char* text, const char* paramKey, libCatCode_KInt index);
           const char* (*getParam_)(libCatCode_kref_catcode_NekoAibo thiz, const char* text, const char* type, const char* paramKey, libCatCode_KInt index);
+          libCatCode_kref_catcode_CodeBuilder (*getStringCodeBuilder)(libCatCode_kref_catcode_NekoAibo thiz, const char* type, libCatCode_KBoolean encode);
           const char* (*remove)(libCatCode_kref_catcode_NekoAibo thiz, const char* text, libCatCode_KBoolean trim, libCatCode_KBoolean ignoreEmpty, libCatCode_kref_kotlin_CharSequence delimiter);
           const char* (*removeByType)(libCatCode_kref_catcode_NekoAibo thiz, const char* text, const char* type, libCatCode_KBoolean trim, libCatCode_KBoolean ignoreEmpty, libCatCode_kref_kotlin_CharSequence delimiter);
           libCatCode_kref_kotlin_collections_List (*split)(libCatCode_kref_catcode_NekoAibo thiz, const char* text);
-          const char* (*toCat)(libCatCode_kref_catcode_NekoAibo thiz, libCatCode_kref_catcode_ToCatParam typeParam);
-          const char* (*toCat_)(libCatCode_kref_catcode_NekoAibo thiz, const char* type);
-          const char* (*toCat__)(libCatCode_kref_catcode_NekoAibo thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array kv);
-          const char* (*toCat___)(libCatCode_kref_catcode_NekoAibo thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array params);
-          const char* (*toCat____)(libCatCode_kref_catcode_NekoAibo thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_collections_Map map);
-          libCatCode_kref_catcode_Neko (*toNeko)(libCatCode_kref_catcode_NekoAibo thiz, libCatCode_kref_catcode_ToCatParam typeParam);
-          libCatCode_kref_catcode_Neko (*toNeko_)(libCatCode_kref_catcode_NekoAibo thiz, const char* type);
-          libCatCode_kref_catcode_Neko (*toNeko__)(libCatCode_kref_catcode_NekoAibo thiz, const char* type, libCatCode_kref_kotlin_Array params);
-          libCatCode_kref_catcode_Neko (*toNeko___)(libCatCode_kref_catcode_NekoAibo thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array paramText);
-          libCatCode_kref_catcode_Neko (*toNeko____)(libCatCode_kref_catcode_NekoAibo thiz, const char* type, libCatCode_kref_kotlin_collections_Map params);
+          const char* (*toCat)(libCatCode_kref_catcode_NekoAibo thiz, const char* type);
+          const char* (*toCat_)(libCatCode_kref_catcode_NekoAibo thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array kv);
+          const char* (*toCat__)(libCatCode_kref_catcode_NekoAibo thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array params);
+          const char* (*toCat___)(libCatCode_kref_catcode_NekoAibo thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_collections_Map map);
+          libCatCode_kref_catcode_Neko (*toNeko)(libCatCode_kref_catcode_NekoAibo thiz, const char* type);
+          libCatCode_kref_catcode_Neko (*toNeko_)(libCatCode_kref_catcode_NekoAibo thiz, const char* type, libCatCode_kref_kotlin_Array params);
+          libCatCode_kref_catcode_Neko (*toNeko__)(libCatCode_kref_catcode_NekoAibo thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array paramText);
+          libCatCode_kref_catcode_Neko (*toNeko___)(libCatCode_kref_catcode_NekoAibo thiz, const char* type, libCatCode_kref_kotlin_collections_Map params);
         } NekoAibo;
         struct {
           libCatCode_KType* (*_type)(void);
@@ -619,59 +580,16 @@ typedef struct {
         } StringTemplate;
         struct {
           libCatCode_KType* (*_type)(void);
-          libCatCode_kref_catcode_CodeTemplate (*get_nekoTemplate)(libCatCode_kref_catcode_TemplateAble thiz);
-          libCatCode_kref_catcode_CodeTemplate (*get_stringTemplate)(libCatCode_kref_catcode_TemplateAble thiz);
-        } TemplateAble;
-        struct {
-          libCatCode_KType* (*_type)(void);
-          libCatCode_kref_catcode_ToCatParam (*ToCatParam)(const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array params);
-          libCatCode_KBoolean (*get_encode)(libCatCode_kref_catcode_ToCatParam thiz);
-          libCatCode_kref_kotlin_Array (*get_params)(libCatCode_kref_catcode_ToCatParam thiz);
-          const char* (*get_type)(libCatCode_kref_catcode_ToCatParam thiz);
-          const char* (*component1)(libCatCode_kref_catcode_ToCatParam thiz);
-          libCatCode_KBoolean (*component2)(libCatCode_kref_catcode_ToCatParam thiz);
-          libCatCode_kref_kotlin_Array (*component3)(libCatCode_kref_catcode_ToCatParam thiz);
-          libCatCode_kref_catcode_ToCatParam (*copy)(libCatCode_kref_catcode_ToCatParam thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array params);
-          libCatCode_KBoolean (*equals)(libCatCode_kref_catcode_ToCatParam thiz, libCatCode_kref_kotlin_Any other);
-          libCatCode_KInt (*hashCode)(libCatCode_kref_catcode_ToCatParam thiz);
-          const char* (*toString)(libCatCode_kref_catcode_ToCatParam thiz);
-        } ToCatParam;
-        struct {
-          libCatCode_KType* (*_type)(void);
-          const char* (*get_catCodeHead)(libCatCode_kref_catcode_WildcatCodeUtil thiz);
           libCatCode_kref_catcode_WildcatTemplate (*get_nekoTemplate)(libCatCode_kref_catcode_WildcatCodeUtil thiz);
           libCatCode_kref_catcode_WildcatTemplate (*get_stringTemplate)(libCatCode_kref_catcode_WildcatCodeUtil thiz);
-          libCatCode_KBoolean (*contains)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text, const char* type, libCatCode_kref_kotlin_Array params);
-          libCatCode_KBoolean (*contains_)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array params);
-          libCatCode_KBoolean (*contains__)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array params);
-          const char* (*getCat)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text, libCatCode_KInt index);
-          const char* (*getCat_)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text, const char* type, libCatCode_KInt index);
-          libCatCode_kref_kotlin_collections_Iterator (*getCatIter)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text, const char* type);
-          libCatCode_kref_kotlin_collections_Iterator (*getCatKVIter)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* code);
-          libCatCode_kref_kotlin_collections_Iterator (*getCatKeyIter)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* code);
-          libCatCode_kref_kotlin_collections_Iterator (*getCatValueIter)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* code);
-          libCatCode_kref_kotlin_collections_List (*getCats)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text, const char* type);
           libCatCode_kref_catcode_LazyCodeBuilder (*getLazyNekoBuilder)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* type, libCatCode_KBoolean encode);
-          libCatCode_kref_catcode_Neko (*getNeko)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text, libCatCode_KInt index);
-          libCatCode_kref_catcode_Neko (*getNeko_)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text, const char* type, libCatCode_KInt index);
+          libCatCode_kref_catcode_Neko (*getNeko)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text, const char* type, libCatCode_KInt index);
           libCatCode_kref_catcode_CodeBuilder (*getNekoBuilder)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* type, libCatCode_KBoolean encode);
-          libCatCode_kref_kotlin_collections_List (*getNekoList)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text, const char* type);
-          const char* (*getParam)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text, const char* paramKey, libCatCode_KInt index);
-          const char* (*getParam_)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text, const char* type, const char* paramKey, libCatCode_KInt index);
           libCatCode_kref_catcode_CodeBuilder (*getStringCodeBuilder)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* type, libCatCode_KBoolean encode);
-          const char* (*remove)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text, libCatCode_KBoolean trim, libCatCode_KBoolean ignoreEmpty, libCatCode_kref_kotlin_CharSequence delimiter);
-          const char* (*removeByType)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text, const char* type, libCatCode_KBoolean trim, libCatCode_KBoolean ignoreEmpty, libCatCode_kref_kotlin_CharSequence delimiter);
-          libCatCode_kref_kotlin_collections_List (*split)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* text);
-          const char* (*toCat)(libCatCode_kref_catcode_WildcatCodeUtil thiz, libCatCode_kref_catcode_ToCatParam typeParam);
-          const char* (*toCat_)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* type);
-          const char* (*toCat__)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array kv);
-          const char* (*toCat___)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array params);
-          const char* (*toCat____)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_collections_Map map);
-          libCatCode_kref_catcode_Neko (*toNeko)(libCatCode_kref_catcode_WildcatCodeUtil thiz, libCatCode_kref_catcode_ToCatParam typeParam);
-          libCatCode_kref_catcode_NoraNeko (*toNeko_)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* type);
-          libCatCode_kref_catcode_NoraNeko (*toNeko__)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* type, libCatCode_kref_kotlin_Array params);
-          libCatCode_kref_catcode_NoraNeko (*toNeko___)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array paramText);
-          libCatCode_kref_catcode_NoraNeko (*toNeko____)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* type, libCatCode_kref_kotlin_collections_Map params);
+          libCatCode_kref_catcode_NoraNeko (*toNeko)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* type);
+          libCatCode_kref_catcode_NoraNeko (*toNeko_)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* type, libCatCode_kref_kotlin_Array params);
+          libCatCode_kref_catcode_NoraNeko (*toNeko__)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* type, libCatCode_KBoolean encode, libCatCode_kref_kotlin_Array paramText);
+          libCatCode_kref_catcode_NoraNeko (*toNeko___)(libCatCode_kref_catcode_WildcatCodeUtil thiz, const char* type, libCatCode_kref_kotlin_collections_Map params);
           struct {
             libCatCode_KType* (*_type)(void);
             libCatCode_kref_catcode_WildcatCodeUtil_Companion (*_instance)();

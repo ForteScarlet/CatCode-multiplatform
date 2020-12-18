@@ -22,14 +22,7 @@ kotlin {
     }
     js(LEGACY) { // xxx.jar
     // js(IR) {
-        browser {
-            testTask {
-                useKarma {
-                    useChromeHeadless()
-                    webpackConfig.cssSupport.enabled = true
-                }
-            }
-        }
+        browser()
     }
 
     linuxX64("linux") {

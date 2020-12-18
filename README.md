@@ -293,7 +293,44 @@ final Neko atNeko = CatCodeUtil.toCat("at", false, "code=123");
 > 参考：[Kotlin 多平台](https://www.kotlincn.net/docs/reference/mpp-intro.html)
 
 ```c
+    // 获取CatCode库入口。kotlin平台通用动态库中只会有一个入口。
+    CatCode_ExportedSymbols* lib = CatCode_symbols();
 
+    // 获取一个字符串数组工具。此工具仅存在于native库中。
+    CatCode_kref_catcode_ArrayUtil arrayUtil = lib->kotlin.root.catcode.ArrayUtil._instance();
+
+    // 构建一个 “字符串数组”
+    CatCode_kref_kotlin_Array array1 = lib->kotlin.root.catcode.ArrayUtil.array2(arrayUtil, "code=123", "name=forteScarlet");
+
+    // 获取CatCodeUtil实例。
+    CatCode_kref_catcode_CatCodeUtil catCodeUtil = lib->kotlin.root.catcode.CatCodeUtil._instance();
+
+    // 调用 CatCodeUtil的 toCat方法获取一个猫猫码字符串实例。
+    // toCat___是重载定义中的其中一个，参数1为catCodeUtil实例，参数2为猫猫码的类型，参数3为猫猫码的参数列表字符串数组。
+    const char* atCode = lib->kotlin.root.catcode.CatCodeUtil.toCat___(catCodeUtil, "at", array1);
+
+    std::cout << atCode << std::endl;
+
+    const char* text = "你好，我是 [CAT:at,code=11111], 你是 [CAT:at,code=222222]";
+
+    // 从一串猫猫码字符串中获取对应的参数值信息。
+    // 参数1 catCodeUtil对象，参数2 存在猫猫码的字符串，参数3 要获取的参数key，参数四 从第几索引位的猫猫码中获取。0为第一位。
+    const char* code = lib->kotlin.root.catcode.CatCodeUtil.getParam(catCodeUtil, text, "code", 1);
+
+    std::cout << "code: " << code << std::endl;
+
+    
+    // DisposeString 释放来自于CatCode中的字符串值。
+    lib->DisposeString(atCode);
+    lib->DisposeString(code);
+
+    // DisposeStablePointer 释放对象
+    lib->DisposeStablePointer(arrayUtil.pinned);
+    lib->DisposeStablePointer(array1.pinned);
+    lib->DisposeStablePointer(catCodeUtil.pinned);
+
+
+    return 0;
 ```
 
 

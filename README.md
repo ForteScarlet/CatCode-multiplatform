@@ -113,7 +113,6 @@
 使用[lib/bin](./lib/bin)文件夹下对应平台的库文件。
 
 
-
 > 你可以基于标准CAT码格式自行实现。
 
 
@@ -245,7 +244,8 @@ final Neko alAll = NekoObjects.getNekoAtAll();
 
 #### 3. 通过工具类获取
 ```java
-final String at = CatCodeUtil.toCat("at", "qq=123");
+final String atString = CatCodeUtil.toCat("at", false, "code=123");
+final Neko atNeko = CatCodeUtil.toCat("at", false, "code=123");
 ```
 
 ### JS
@@ -291,6 +291,11 @@ final String at = CatCodeUtil.toCat("at", "qq=123");
 
 > 注②：kotlin全平台尚处于alpha阶段，不保证其效率与稳定性。
 > 参考：[Kotlin 多平台](https://www.kotlincn.net/docs/reference/mpp-intro.html)
+
+```c
+
+```
+
 
 ```C
 // 待续...

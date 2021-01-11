@@ -5,3 +5,4 @@
 /build/classes/kotlin/jvm/main/
 /build/classes/kotlin/linux/main/
 /build/classes/kotlin/mingw/main/
+credentials.properties

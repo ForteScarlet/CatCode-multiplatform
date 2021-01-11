@@ -1,3 +1,9 @@
 
-rootProject.name = "CatCode"
+rootProject.name = "catcode"
 
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        jcenter()
+    }
+}

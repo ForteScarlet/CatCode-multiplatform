@@ -40,7 +40,6 @@ version = catCodeVersion
 
 repositories {
     mavenCentral()
-    jcenter()
 }
 
 

@@ -25,10 +25,12 @@ val credentialsPropertiesFile: File = if(files?.size == 1) {
     throw RuntimeException("Cannot found file: $credentialsPropertiesName.")
 }
 
-val credentialsMap = credentialsPropertiesFile.readLines().map {
+val credentialsMap = credentialsPropertiesFile
+    .readLines()
+    .associate {
     val sp = it.split(Regex("="), 2)
     sp[0] to sp[1]
-}.toMap()
+}
 
 println(credentialsMap)
 
